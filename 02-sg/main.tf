@@ -139,7 +139,7 @@ resource "aws_security_group_rule" "openvpn_home" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "openvpn_home" {
+resource "aws_security_group_rule" "openvpn_allow_all" {
   security_group_id = module.openvpn_sg.sg_id
   type              = "ingress"
   from_port         = 22
