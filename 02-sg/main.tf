@@ -139,6 +139,15 @@ resource "aws_security_group_rule" "openvpn_home" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+resource "aws_security_group_rule" "openvpn_home" {
+  security_group_id = module.openvpn_sg.sg_id
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"  
+  source_security_group_id = "sg-04b7bd69af45641ab"
+}
+
 
 # MONGODB Security Rules
 #-----------------------------------------------------------------
