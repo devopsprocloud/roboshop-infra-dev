@@ -17,6 +17,7 @@ pipeline {
                 sh """
                     cd 01-vpc
                     terraform init -reconfigure
+                    terraform destroy -target=aws_db_subnet_group.db_subnet_group
                     terraform apply -auto-approve
                 """
             }
