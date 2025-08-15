@@ -1,6 +1,6 @@
 module "openvpn_sg" {
   source = "git::https://github.com/devopsprocloud/terraform-sg-module.git?ref=main"
-  sg_name = "openvpn"
+  sg_name = "openvpn-dev"
   sg_description = "Securiy Group for OpenVPN"
   vpc_id = data.aws_vpc.default_vpc.id
   common_tags = var.common_tags
@@ -139,14 +139,14 @@ resource "aws_security_group_rule" "openvpn_home" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-resource "aws_security_group_rule" "openvpn_allow_all" {
-  security_group_id = module.openvpn_sg.sg_id
-  type              = "ingress"
-  from_port         = 22
-  to_port           = 22
-  protocol          = "tcp"  
-  source_security_group_id = "sg-04b7bd69af45641ab"
-}
+# resource "aws_security_group_rule" "openvpn_allow_all" {
+#   security_group_id = module.openvpn_sg.sg_id
+#   type              = "ingress"
+#   from_port         = 22
+#   to_port           = 22
+#   protocol          = "tcp"  
+#   source_security_group_id = "sg-04b7bd69af45641ab"
+# }
 
 
 # MONGODB Security Rules
